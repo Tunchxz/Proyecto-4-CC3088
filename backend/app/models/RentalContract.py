@@ -1,5 +1,5 @@
 from sqlalchemy import CheckConstraint, Column, Date, ForeignKey, Integer
-from .base import Base
+from db import Base
 
 class RentalContract(Base):
     __tablename__ = 'rentalcontract'

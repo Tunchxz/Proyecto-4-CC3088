@@ -1,5 +1,5 @@
 from sqlalchemy import CheckConstraint, Column, ForeignKey, Integer, String
-from .base import Base
+from db import Base
 
 class Vehicle(Base):
     __tablename__ = 'vehicle'

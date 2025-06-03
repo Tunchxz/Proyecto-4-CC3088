@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Enum, ForeignKey, Integer, String, UniqueConstraint
-from .base import Base
+from db import Base
 from sqlalchemy.orm import relationship
 import enum
 

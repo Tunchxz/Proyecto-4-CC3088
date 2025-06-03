@@ -1,5 +1,5 @@
 from sqlalchemy import DECIMAL, CheckConstraint, Column, Integer
-from .base import Base
+from db import Base
 
 class Rates(Base):
     __tablename__ = 'rates'

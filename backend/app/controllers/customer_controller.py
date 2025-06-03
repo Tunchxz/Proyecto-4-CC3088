@@ -4,7 +4,7 @@ from schemas.Customer import CustomerCreate, CustomerRead, CustomerUpdate
 from services.customer_service import (
     get_customer, get_all_customers, create_customer, update_customer, delete_customer
 )
-from db import get_db  # función que retorna la sesión SQLAlchemy
+from db import get_db
 from typing import List
 
 router = APIRouter(prefix="/customers", tags=["Customers"])

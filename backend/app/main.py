@@ -4,7 +4,7 @@ import psycopg2
 import uvicorn
 from db import engine
 from db import Base
-from models import *
+from models import Address, Color, ContractFine, Country, Customer, CustomerAddress, Facility, Fine, Maintenance, Manufacturer, Model, ModelColor, logs, OperationStatus, Payment, Rates, Refund, RentalContract, Reservation, Vehicle, VehicleMaintenance, VehicleType, views
 from sqlalchemy.schema import CreateTable
 
 SCRIPTS_DIR = "/scripts"
@@ -62,18 +62,27 @@ def inicializar_base():
                 else:
                     print("⚠️  No se encontró data.sql, omitiendo inserción de datos.")
 
-                # Ejecutar view.sql si existe
-                view_path = os.path.join(SCRIPTS_DIR, "view.sql")
-                if os.path.exists(view_path):
-                    with open(view_path, "r") as f:
+                # Ejecutar views.sql si existe
+                views_path = os.path.join(SCRIPTS_DIR, "views.sql")
+                if os.path.exists(views_path):
+                    with open(views_path, "r") as f:
                         cur.execute(f.read())
                     print("✅ Vista creada correctamente.")
                 else:
-                    print("⚠️  No se encontró view.sql, omitiendo creación de vista.")
+                    print("⚠️  No se encontró views.sql, omitiendo creación de vista.")
+
+                # Ejecutar triggers.sql si existe
+                views_path = os.path.join(SCRIPTS_DIR, "triggers.sql")
+                if os.path.exists(views_path):
+                    with open(views_path, "r") as f:
+                        cur.execute(f.read())
+                    print("✅ Triggers y funciones creadas correctamente.")
+                else:
+                    print("⚠️  No se encontró triggers.sql, omitiendo creación de funciones y triggers.")
 
             conn.commit()
     except Exception as e:
-        print("❌ Error al insertar datos o crear vista:", e)
+        print("❌ Error al insertar datos / crear Views, Triggers o Functions: ", e)
 
 def levantar_api():
     print("🚀 Levantando API en http://localhost:8000")

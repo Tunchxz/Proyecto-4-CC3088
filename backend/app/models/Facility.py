@@ -1,5 +1,5 @@
 from sqlalchemy import Column, ForeignKey, Integer, String
-from .base import Base
+from db import Base
 from sqlalchemy.orm import relationship
 
 class Facility(Base):

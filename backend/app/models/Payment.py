@@ -1,6 +1,6 @@
 import enum
 from sqlalchemy import DECIMAL, CheckConstraint, Column, Date, Enum, ForeignKey, Integer
-from .base import Base
+from db import Base
 
 class PaymentMethodEnum(enum.Enum):
     card = 'Card'

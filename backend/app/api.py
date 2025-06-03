@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from controllers.customer_controller import router as customer_router
 from controllers.vehicle_controller import router as vehicle_router
 from controllers.reservation_controller import router as reservation_router
+from controllers.log_controller import router as log_router
 
 app = FastAPI()
 
@@ -27,3 +28,4 @@ def root():
 app.include_router(customer_router)
 app.include_router(vehicle_router)
 app.include_router(reservation_router)
+app.include_router(log_router)

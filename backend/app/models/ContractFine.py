@@ -1,5 +1,5 @@
 from sqlalchemy import Column, ForeignKey, Integer
-from .base import Base
+from db import Base
 
 class ContractFine(Base):
     __tablename__ = 'contract_fine'

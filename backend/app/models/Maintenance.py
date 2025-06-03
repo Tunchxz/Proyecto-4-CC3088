@@ -1,5 +1,5 @@
 from sqlalchemy import DECIMAL, CheckConstraint, Column, Date, Integer, Text
-from .base import Base
+from db import Base
 
 class Maintenance(Base):
     __tablename__ = 'maintenance'
