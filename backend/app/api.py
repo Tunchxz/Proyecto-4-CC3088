@@ -4,6 +4,8 @@ from controllers.customer_controller import router as customer_router
 from controllers.vehicle_controller import router as vehicle_router
 from controllers.reservation_controller import router as reservation_router
 from controllers.log_controller import router as log_router
+from controllers.utils_controller import router as utils_router
+from controllers.analytics_controller import router as analytics_router
 
 app = FastAPI()
 
@@ -29,3 +31,5 @@ app.include_router(customer_router)
 app.include_router(vehicle_router)
 app.include_router(reservation_router)
 app.include_router(log_router)
+app.include_router(utils_router)
+app.include_router(analytics_router)
