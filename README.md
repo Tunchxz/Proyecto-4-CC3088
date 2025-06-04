@@ -144,14 +144,10 @@ Este sistema es una evolución del **Proyecto 3 - Sistema de Alquiler de Vehícu
    cd backend
    docker-compose up --build
    
-   # Frontend
-   cd ../frontend
-   docker-compose up --build
-   ```
 
    Este comando:
    - Construirá las imágenes de Docker necesarias
-   - Levantará los contenedores para backend, frontend y base de datos
+   - Levantará los contenedores para backend y base de datos
    - Configurará la red entre los servicios
    - Ejecutará los scripts de inicialización de la base de datos
 
@@ -171,19 +167,10 @@ cd backend
 pip install -r requirements.txt
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
-
-#### Frontend
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
 ---
 
 ## **Servicios y Puertos**
 
-- **Frontend**: http://localhost:3000
 - **Backend API**: http://localhost:8000
 - **PostgreSQL**: localhost:5432
 - **Documentación API**: http://localhost:8000/docs
@@ -276,9 +263,6 @@ La documentación completa está disponible en `/docs` cuando el servidor está 
 ```bash
 # Ver logs del backend
 cd backend && docker-compose logs -f
-
-# Ver logs del frontend
-cd frontend && docker-compose logs -f
 
 # Reiniciar servicios
 docker-compose restart
