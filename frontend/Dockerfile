@@ -1,5 +1,5 @@
 # Dockerfile — Desarrollo Vite + React
-FROM node:20-alpine
+FROM node:latest
 
 WORKDIR /app
 
@@ -7,7 +7,6 @@ WORKDIR /app
 COPY package*.json ./
 
 RUN npm install
-RUN npm install bootstrap bootstrap-icons
 
 # Copiar el resto del código fuente
 COPY . .
