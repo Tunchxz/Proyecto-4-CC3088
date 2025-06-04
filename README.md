@@ -75,24 +75,28 @@ A continuación se presentan capturas de las diferentes secciones del sistema im
 ## **Estructura del Proyecto**
 
 ```
-├── README.md                                    # Documentación principal del proyecto
-├── backend                                      # Aplicación del servidor (API)
-│   ├── Dockerfile                              # Configuración para containerizar el backend
-│   ├── app                                     # Código fuente principal de la aplicación
+├── README.md                                 # Documentación principal del proyecto
+├── backend
+│   ├── Dockerfile                            # Configuración para containerizar el backend
+│   ├── app                                   # Código fuente principal de la aplicación
 │   │   ├── __init__.py
-│   │   ├── api.py                             # Definición de rutas/endpoints de la API
-│   │   ├── controllers/                        # Lógica de control para manejar requests HTTP
+│   │   ├── api.py                            # Definición de rutas/endpoints de la API
+│   │   ├── controllers/                      # Lógica de control para manejar requests HTTP
 │   │   ├── db.py                             # Configuración y conexión a la base de datos
 │   │   ├── main.py                           # Punto de entrada principal de la aplicación
-│   │   ├── models/                            # Definición de modelos/tablas de la BD
-│   │   ├── schemas/                           # Validación y serialización de datos (Pydantic)
-│   │   └── services/                          # Lógica de negocio
+│   │   ├── models/                           # Definición de modelos/tablas con ORM
+│   │   ├── schemas/                          # Validación y serialización de datos (Pydantic)
+│   │   └── services/                         # Lógica de negocio
 │   ├── docker-compose.yml                    # Orquestación de containers (backend + BD)
 │   ├── requirements.txt                      # Dependencias de Python
-│   └── scripts/                               # Scripts SQL para la base de datos
+│   └── scripts
+│       ├── data.sql                          # Datos iniciales
+│       ├── schema.sql                        # Esquema (generado por el ORM)
+│       ├── triggers.sql                      # Triggers (generado por el ORM)
+│       └── views.sql                         # Vistas (generado por el ORM)
 ├── docs                                      # Documentación del proyecto
-│   └── images/                                # Screenshots y diagramas
-└── frontend                                  # Aplicación cliente (React + Vite)
+│   └── images/                               # Screenshots y diagramas
+└── frontend
     ├── Dockerfile                            # Configuración para containerizar el frontend
     ├── docker-compose.yml
     ├── eslint.config.js
@@ -196,7 +200,7 @@ A continuación se presentan capturas de las diferentes secciones del sistema im
 **DIAGRAMA ER**  
 ![DiagramaER](./docs/images/diagrama-er.png)  
 
-Para una vista más detallada puedes ir a: `docs/images/diagrama-er.png` o [Eraser.io](https://app.eraser.io/workspace/pylC2GEaEMnptbDw9yl4?origin=share). También puedes ver los modelos elaborados con SQLAlchemy en `backend/app/models`.  
+Para una vista más detallada, puedes ir a `docs/images/diagrama-er.png` o [Eraser.io](https://app.eraser.io/workspace/pylC2GEaEMnptbDw9yl4?origin=share). También, puedes ver los modelos elaborados con SQLAlchemy en `backend/app/models`.  
 
 ## **Comandos Útiles**
 
