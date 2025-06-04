@@ -1,4 +1,4 @@
-# **Proyecto 4 - Sistema CRUD de Tickets**  
+# **Proyecto 4**  
 Proyecto final de Bases de Datos 1. Sistema completo de gestión con backend en FastAPI, frontend en React y base de datos PostgreSQL.
 
 ---
