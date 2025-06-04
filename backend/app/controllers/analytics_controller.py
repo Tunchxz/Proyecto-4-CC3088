@@ -15,9 +15,11 @@ def read_reservation_summary(
     from_date: Optional[date] = Query(None),
     to_date: Optional[date] = Query(None),
     status: Optional[str] = Query(None),
+    customer_name: Optional[str] = Query(None),
+    car_plate: Optional[str] = Query(None),
     db: Session = Depends(get_db)
 ):
-    return get_reservation_summary(db, from_date, to_date, status)
+    return get_reservation_summary(db, from_date, to_date, status, customer_name, car_plate)
 
 @router.get("/maintenance", response_model=List[MaintenanceSummaryRead])
 def read_maintenance_summary(
