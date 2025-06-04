@@ -1,80 +1,133 @@
-# **Proyecto 4**  
-Proyecto final de Bases de Datos 1. Sistema completo de gestión con backend en FastAPI, frontend en React y base de datos PostgreSQL.
+# **Proyecto 4: Sistema de Gestión y Reportería**
 
----
+Este repositorio corresponde al **Proyecto 4** del curso **Bases de Datos 1 (CC3088)** de la **Universidad del Valle de Guatemala**. El objetivo de esta actividad es diseñar e implementar un sistema completo que incluya modelado de datos, operaciones CRUD, validaciones SQL y generación de reportes, todo ello utilizando un **ORM** como capa de abstracción de acceso a datos.
 
-## Descripción del Proyecto
+## **Descripción General**
 
-Este sistema es una evolución del **Proyecto 3 - Sistema de Alquiler de Vehículos**, ahora desarrollado como proyecto final con mejoras significativas en la arquitectura y tecnologías utilizadas. El sistema permite la gestión completa de un negocio de alquiler de vehículos con funcionalidades avanzadas de reportes, gestión de reservas, contratos, pagos y mantenimientos.
+Durante el desarrollo del proyecto, se construyó una solución integral que simula la gestión de una empresa de alquiler de vehículos. Esta incluye tres módulos CRUD principales (Clientes, Vehículos, Reservas) y tres reportes avanzados con múltiples filtros. Todo el sistema fue implementado usando herramientas modernas de desarrollo web y bases de datos, asegurando coherencia en los datos, validaciones tanto a nivel de aplicación como en la base de datos, y funcionalidades de exportación de datos a CSV.
 
-### Características principales:
-- Gestión completa de reservas y contratos de alquiler
-- Sistema de pagos y control de multas
-- Gestión de mantenimientos de vehículos
-- Generación de reportes avanzados con filtros múltiples
-- Interfaz web moderna y responsiva
-- API RESTful robusta
-- Base de datos optimizada con triggers, vistas y funciones
+## **Requerimientos del Proyecto**
 
----
+A continuación se enlistan los principales requerimientos técnicos y funcionales que cumple este sistema:
 
-## **Colaboradores**
+### Modelo de Datos
+- Al menos **15 tablas normalizadas hasta 3FN**.
+- Relaciones **1:N** y **N:M**.
+- Mínimo **2 tablas de cruce**.
+- Inclusión de **3 tipos de datos personalizados**.
+- Diagrama E-R completo con claves y cardinalidades.
 
-- Cristian Túnchez (231359)  
-- Dulce Ambrosio (231143)  
-- Daniel Chet (231177)  
-- Javier Linares (231135)  
-- Gadiel Ocaña (231270)
+### CRUD
+- Módulos completos para **Clientes, Vehículos y Reservas**.
+- Funcionalidades de **crear, ver, editar y eliminar registros**.
+- Uso de **SQL VIEW** como base para las vistas de índice.
 
----
+### Validaciones y Reglas
+- Restricciones: `CHECK`, `NOT NULL`, `UNIQUE`, `DEFAULT`.
+- Al menos **3 triggers funcionales**.
+- Al menos **2 funciones SQL personalizadas**.
+- Validaciones tanto en el frontend como en el backend.
+
+### Vistas SQL
+- Al menos **3 vistas (VIEW)** para facilitar la reportería y visualización de datos.
+
+### Datos de Prueba
+- Base de datos con **al menos 1000 registros** distribuidos entre las tablas.
+- Datos coherentes y variados.
+
+### Reportes (Puntos Extra)
+- **Reporte de Reservas** con filtros por cliente, vehículo, fecha, estado y tipo de reserva.
+- **Reporte de Mantenimientos** con filtros por tipo de mantenimiento, vehículo, costo, fecha y proveedor.
+- **Reporte de Ingresos por Contrato** con filtros por período, monto, cliente, estado y tipo de contrato.
+- Cada reporte permite la **exportación a CSV** y presenta los datos de manera clara y organizada.
+
+### Documentación
+- Este archivo `README.md`.
+- Archivos `schema.sql` y `data.sql`.
+- Diagrama ER en formato PDF.
+
+## **Visualización del Proyecto**
+
+A continuación se presentan capturas de las diferentes secciones del sistema implementado:
+
+### CRUDs
+
+**Clientes**  
+![CRUD-Customer](./docs/images/crud-customer.png)  
+
+**Vehículos**  
+![CRUD-Vehicle](./docs/images/crud-vehicle.png)  
+
+**Reservas**  
+![CRUD-Reservation](./docs/images/crud-reservation.png)  
+
+### Reportes
+
+**Reporte de Reservas**  
+![Reporte-Reservas](./docs/images/reporte-reservas.png)  
+
+**Reporte de Mantenimientos**  
+![Reporte-Mantenimientos](./docs/images/reporte-mantenimientos.png)  
+
+**Reporte de Ingresos por Contrato**  
+![Reporte-Ingresos](./docs/images/reporte-ingresos.png)  
 
 ## **Estructura del Proyecto**
 
 ```
-├── README.md
-├── backend/                    # API Backend (FastAPI)
-│   ├── .dockerignore
-│   ├── .env                   # Variables de entorno
-│   ├── .gitignore
-│   ├── docker-compose.yml     # Orquestación de servicios
-│   ├── Dockerfile             # Imagen del backend
-│   ├── requirements.txt       # Dependencias Python
-│   ├── app/
+├── README.md                                    # Documentación principal del proyecto
+├── backend                                      # Aplicación del servidor (API)
+│   ├── Dockerfile                              # Configuración para containerizar el backend
+│   ├── app                                     # Código fuente principal de la aplicación
 │   │   ├── __init__.py
-│   │   ├── api.py            # Endpoints de la API
-│   │   ├── db.py             # Configuración de base de datos
-│   │   ├── main.py           # Punto de entrada principal
-│   │   ├── controllers/      # Controladores de la aplicación
-│   │   ├── models/          # Modelos SQLAlchemy
-│   │   ├── schemas/         # Esquemas Pydantic
-│   │   └── services/        # Lógica de negocio
-│   └── scripts/
-│       ├── data.sql         # Datos iniciales
-│       ├── schema.sql       # Esquema generado automáticamente
-│       ├── triggers.sql     # Triggers y funciones
-│       └── views.sql        # Vistas de la base de datos
-└── frontend/                # Frontend (React + Vite)
-    ├── .dockerignore
-    ├── .env                 # Variables de entorno del frontend
-    ├── .gitignore
+│   │   ├── api.py                             # Definición de rutas/endpoints de la API
+│   │   ├── controllers/                        # Lógica de control para manejar requests HTTP
+│   │   ├── db.py                             # Configuración y conexión a la base de datos
+│   │   ├── main.py                           # Punto de entrada principal de la aplicación
+│   │   ├── models/                            # Definición de modelos/tablas de la BD
+│   │   ├── schemas/                           # Validación y serialización de datos (Pydantic)
+│   │   └── services/                          # Lógica de negocio
+│   ├── docker-compose.yml                    # Orquestación de containers (backend + BD)
+│   ├── requirements.txt                      # Dependencias de Python
+│   └── scripts/                               # Scripts SQL para la base de datos
+├── docs                                      # Documentación del proyecto
+│   └── images/                                # Screenshots y diagramas
+└── frontend                                  # Aplicación cliente (React + Vite)
+    ├── Dockerfile                            # Configuración para containerizar el frontend
     ├── docker-compose.yml
-    ├── Dockerfile           # Imagen del frontend
-    ├── eslint.config.js     # Configuración ESLint
-    ├── index.html           # HTML principal
-    ├── package.json         # Dependencias Node.js
-    ├── vite.config.js       # Configuración Vite
-    ├── public/
-    │   └── vite.svg
-    └── src/
-        ├── api.js           # Cliente API
-        ├── App.css
-        ├── App.jsx          # Componente principal
-        ├── index.css
-        ├── main.jsx         # Punto de entrada
-        └── assets/
-```
-
----
+    ├── eslint.config.js
+    ├── index.html
+    ├── package-lock.json
+    ├── package.json                          # Configuración y dependencias del proyecto
+    ├── src                                   # Código fuente de React
+    │   ├── App                               # Componente principal y configuración
+    │   │   ├── App.jsx
+    │   │   ├── layout/
+    │   │   ├── main.jsx
+    │   │   └── routes.jsx
+    │   ├── customers                         # Módulo de gestión de clientes
+    │   │   ├── CustomersPage.jsx
+    │   │   ├── components/
+    │   │   └── hooks/
+    │   ├── index.css
+    │   ├── reports                           # Módulo de reportes
+    │   │   ├── ContractIncomeReport.jsx
+    │   │   ├── MaintenanceReport.jsx
+    │   │   ├── ReservationReport.jsx
+    │   │   └── components/
+    │   ├── reservations                      # Módulo de gestión de reservas
+    │   │   ├── ReservationsPage.jsx
+    │   │   ├── components/
+    │   │   └── hooks/
+    │   ├── shared                            # Código compartido entre módulos
+    │   │   ├── api/
+    │   │   └── components/
+    │   └── vehicles                          # Módulo de gestión de vehículos
+    │       ├── VehiclesPage.jsx
+    │       ├── components/
+    │       └── hooks/
+    └── vite.config.js                        # Configuración de Vite (bundler)
+```  
 
 ## **Tecnologías Utilizadas**
 
@@ -82,181 +135,68 @@ Este sistema es una evolución del **Proyecto 3 - Sistema de Alquiler de Vehícu
 - **Python** con FastAPI
 - **SQLAlchemy** - ORM para Python
 - **PostgreSQL** - Base de datos relacional
-- **Uvicorn** - Servidor ASGI
-- **Psycopg2** - Adaptador PostgreSQL para Python
+- **Pydantic** - Librería de validación de datos para Python
 - **Docker** para containerización
 
 ### Frontend
-- **React** - Biblioteca para interfaces de usuario
+- **React** (framework)
 - **JavaScript** (Vanilla)
-- **HTML5** y **CSS3**
 - **Vite** - Herramienta de build rápida
-- **Bootstrap 5** - Framework CSS
-- **Bootstrap Icons** - Iconografía
+- **Material UI** - Librería de componentes para React
 - **Docker** para containerización
 
 ### Infraestructura y DevOps
 - **Docker Compose** para orquestación de servicios
 
----
+## **Cómo Ejecutar el Proyecto**
 
-## **Requisitos Previos**
+### **Requisitos Previos**
 
-- [Docker](https://www.docker.com/) y [Docker Compose](https://docs.docker.com/compose/) instalados
-- Git
+- [Docker](https://www.docker.com/) y [Docker Compose](https://docs.docker.com/compose/)  
+- [Git](https://git-scm.com/)
 
----
-
-## **Instalación y Ejecución**
-
-### Opción 1: Con Docker (Recomendado)
+### **Instalación y Ejecución**
 
 1. **Clonar el repositorio**
+
    ```bash
-   git clone <repository-url>
+   git clone git@github.com:Tunchxz/Proyecto-4-CC3088.git
+   ```
+
+2. **Ingresar a la carpeta del proyecto**
+
+   ```bash
    cd Proyecto-4-CC3088
    ```
 
-2. **Configurar variables de entorno**
+3. **Levantar los servicios (backend)**
 
-   Backend (`backend/.env`):
-   ```env
-   DB_HOST=localhost
-   DB_PORT=5432
-   POSTGRES_DB=proyecto4_db
-   POSTGRES_USER=admin
-   POSTGRES_PASSWORD=password123
-   ```
-   
-   Frontend (`frontend/.env`):
-   ```env
-   VITE_API_URL=http://localhost:8000
-   ```
-
-3. **Levantar los servicios**
-   Desde el directorio raíz del proyecto:
+   Desde el directorio raíz del proyecto:  
    ```bash
+   cd backend  
    docker-compose up --build
    ```
-   O bien, iniciar backend y frontend por separado:
+
+4. **Levantar los servicios (frontend)**
+
+   Desde el directorio raíz del proyecto:  
    ```bash
-   # Backend (incluye PostgreSQL)
-   cd backend
+   cd frontend  
    docker-compose up --build
-   
+   ```
 
-   Este comando:
-   - Construirá las imágenes de Docker necesarias
-   - Levantará los contenedores para backend y base de datos
-   - Configurará la red entre los servicios
-   - Ejecutará los scripts de inicialización de la base de datos
-
-4. **Acceder a la aplicación**
+5. **Acceder a la aplicación**
 
    - **Backend API**: [http://localhost:8000](http://localhost:8000)
    - **Documentación API**: [http://localhost:8000/docs](http://localhost:8000/docs)
-   - **PostgreSQL**: localhost:5432
-
----
-
-### Opción 2: Desarrollo Local
-
-#### Backend
-```bash
-cd backend
-pip install -r requirements.txt
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
-```
----
-
-## **Servicios y Puertos**
-
-- **Backend API**: http://localhost:8000
-- **PostgreSQL**: localhost:5432
-- **Documentación API**: http://localhost:8000/docs
-
----
-
-## **Funcionalidades del Sistema**
-
-El sistema incluye una inicialización automática que:
-
-1. **Crea la base de datos** usando SQLAlchemy
-2. **Genera schema.sql** automáticamente desde los modelos
-3. **Espera conexión a PostgreSQL** con reintentos automáticos
-4. **Inserta datos iniciales** desde `data.sql`
-5. **Crea vistas** desde `views.sql`
-6. **Configura triggers y funciones** desde `triggers.sql`
-7. **Levanta la API** en el puerto 8000
-
-### Gestión de Vehículos
-- Registro y actualización de vehículos
-- Control de disponibilidad
-- Gestión de mantenimientos
-
-### Gestión de Clientes
-- Registro de clientes
-- Historial de alquileres
-- Gestión de información personal
-
-### Sistema de Reservas
-- Creación de reservas
-- Modificación y cancelación
-- Control de disponibilidad por fechas
-
-### Contratos de Alquiler
-- Generación automática de contratos
-- Gestión de términos y condiciones
-- Control de estados del contrato
-
-### Sistema de Pagos
-- Registro de pagos
-- Control de multas
-- Generación de facturas
-
-### Reportes Avanzados
-- Reportes de ingresos por período
-- Análisis de vehículos más rentados
-- Reportes de mantenimientos
-- Dashboard con métricas clave
-
----
+   - **Frontend**: [http://localhost:5173](http://localhost:5173)
 
 ## **Estructura de la Base de Datos**
 
-Los modelos están definidos en `backend/app/models/` e incluyen:
-- Address, Color, Country, Customer
-- Vehicle, VehicleType, Manufacturer, Model
-- RentalContract, Reservation, Payment
-- Fine, Maintenance, Rates, Refund
+**DIAGRAMA ER**  
+![DiagramaER](./docs/images/diagrama-er.png)  
 
----
-
-## **Scripts de Base de Datos**
-
-El proyecto incluye scripts SQL organizados en:
-
-- **`schema.sql`**: Definición de tablas, índices y restricciones (generado automáticamente desde los modelos SQLAlchemy)
-- **`data.sql`**: Datos iniciales y de prueba para poblar la base de datos
-- **`views.sql`**: Vistas para reportes y consultas complejas
-- **`triggers.sql`**: Funciones y triggers automáticos de PostgreSQL
-
----
-
-## **API Endpoints**
-
-La API REST incluye endpoints para:
-
-- `/api/vehicles` - Gestión de vehículos
-- `/api/customers` - Gestión de clientes  
-- `/api/reservations` - Sistema de reservas
-- `/api/contracts` - Contratos de alquiler
-- `/api/payments` - Sistema de pagos
-- `/api/reports` - Generación de reportes
-
-La documentación completa está disponible en `/docs` cuando el servidor está ejecutándose.
-
----
+Para una vista más detallada puedes ir a: `docs/images/diagrama-er.png` o [Eraser.io](https://app.eraser.io/workspace/pylC2GEaEMnptbDw9yl4?origin=share). También puedes ver los modelos elaborados con SQLAlchemy en `backend/app/models`.  
 
 ## **Comandos Útiles**
 
@@ -267,11 +207,17 @@ cd backend && docker-compose logs -f
 # Reiniciar servicios
 docker-compose restart
 
+# Detener y eliminar contenedores, redes, volúmenes e imágenes creadas
+docker-compose down -v
+
 # Acceder a la base de datos
-docker-compose exec postgres psql -U admin -d proyecto4_db
+docker-compose exec postgres psql -U admin -d rental_cars_db
 ```
----
 
-## **Licencia**
+## **Colaboradores**
 
-Este proyecto es parte del curso de Bases de Datos 1 en la Universidad del Valle de Guatemala y es únicamente para fines educativos.
+- Cristian Túnchez (231359)  
+- Dulce Ambrosio (231143)  
+- Daniel Chet (231177)  
+- Javier Linares (231135)  
+- Gadiel Ocaña (231270)
