@@ -289,16 +289,6 @@ docker-compose exec postgres psql -U admin -d proyecto4_db
 
 ---
 
-## **Contribuir**
-
-1. Fork el proyecto
-2. Crear una rama para tu feature (`git checkout -b feature/nueva-funcionalidad`)
-3. Commit tus cambios (`git commit -am 'Agregar nueva funcionalidad'`)
-4. Push a la rama (`git push origin feature/nueva-funcionalidad`)
-5. Crear un Pull Request
-
----
-
 ## **Licencia**
 
 Este proyecto es parte del curso de Bases de Datos 1 en la Universidad del Valle de Guatemala y es únicamente para fines educativos.
