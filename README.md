@@ -1,4 +1,4 @@
-# **Proyecto 4 - Sistema de Alquiler de Vehículos - Proyecto Final**  
+# **Proyecto 4 - Sistema CRUD de Tickets**  
 Proyecto final de Bases de Datos 1. Sistema completo de gestión con backend en FastAPI, frontend en React y base de datos PostgreSQL.
 
 ---
@@ -157,7 +157,6 @@ Este sistema es una evolución del **Proyecto 3 - Sistema de Alquiler de Vehícu
 
 4. **Acceder a la aplicación**
 
-   - **Frontend**: [http://localhost:3000](http://localhost:3000)
    - **Backend API**: [http://localhost:8000](http://localhost:8000)
    - **Documentación API**: [http://localhost:8000/docs](http://localhost:8000/docs)
    - **PostgreSQL**: localhost:5432
@@ -243,7 +242,6 @@ Los modelos están definidos en `backend/app/models/` e incluyen:
 - Vehicle, VehicleType, Manufacturer, Model
 - RentalContract, Reservation, Payment
 - Fine, Maintenance, Rates, Refund
-- Y más...
 
 ---
 
@@ -269,6 +267,8 @@ La API REST incluye endpoints para:
 - `/api/payments` - Sistema de pagos
 - `/api/reports` - Generación de reportes
 
+La documentación completa está disponible en `/docs` cuando el servidor está ejecutándose.
+
 ---
 
 ## **Comandos Útiles**
@@ -286,7 +286,6 @@ docker-compose restart
 # Acceder a la base de datos
 docker-compose exec postgres psql -U admin -d proyecto4_db
 ```
-
 ---
 
 ## **Licencia**
