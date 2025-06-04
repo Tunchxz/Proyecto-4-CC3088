@@ -9,10 +9,10 @@ class TransmissionEnum(enum.Enum):
     continuously_variable = 'continuously variable'
 
 class SeatsEnum(enum.Enum):
-    two = '2'
-    five = '5'
-    seven = '7'
-    eight = '8'
+    two = 'two'
+    five = 'five'
+    seven = 'seven'
+    eight = 'eight'
     
 class Model(Base):
     __tablename__ = 'model'

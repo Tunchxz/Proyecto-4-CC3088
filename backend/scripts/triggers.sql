@@ -1,5 +1,5 @@
 -- =======================
---  Proyecto 4 (VIEWS)
+--  Proyecto 4 (DDL)
 -- =======================
 
 -- -------------------
@@ -57,7 +57,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER trg_validate_reservation_dates
+CREATE OR REPLACE TRIGGER trg_validate_reservation_dates
 BEFORE INSERT OR UPDATE ON reservation
 FOR EACH ROW EXECUTE FUNCTION validate_reservation_dates();
 
@@ -72,7 +72,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER trg_mark_vehicle_reserved
+CREATE OR REPLACE TRIGGER trg_mark_vehicle_reserved
 AFTER INSERT ON reservation
 FOR EACH ROW EXECUTE FUNCTION mark_vehicle_reserved();
 
@@ -86,6 +86,6 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER trg_log_payment_insert
+CREATE OR REPLACE TRIGGER trg_log_payment_insert
 AFTER INSERT ON payment
 FOR EACH ROW EXECUTE FUNCTION log_payment_insert();

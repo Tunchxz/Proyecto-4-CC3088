@@ -3,9 +3,9 @@ from sqlalchemy import DECIMAL, CheckConstraint, Column, Date, Enum, ForeignKey,
 from db import Base
 
 class PaymentMethodEnum(enum.Enum):
-    card = 'Card'
-    cash = 'Cash'
-    transfer = 'Transfer'
+    card = 'card'
+    cash = 'cash'
+    transfer = 'transfer'
 
 class Payment(Base):
     __tablename__ = 'payment'
